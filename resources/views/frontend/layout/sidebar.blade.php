@@ -4,9 +4,9 @@
         <div class="sidebar-brand-icon">
           <img src="frontend_dashboard/img/logo/logologin.png" width="50" height="50">
         </div>
-        <div class="sidebar-brand-text mx-1"style="text-align: left; ">Bantuan Pangan Beras</div>
+        <div class="mx-1 sidebar-brand-text"style="text-align: left; ">Bantuan Pangan Beras</div>
       </a>
-      <hr class="sidebar-divider my-0">
+      <hr class="my-0 sidebar-divider">
       <li class="nav-item active">
         <a class="nav-link" href="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -35,7 +35,7 @@
           <span>Proses</span>
         </a>
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+          <div class="py-2 bg-white rounded collapse-inner">
             <h6 class="collapse-header">Proses Perhitungan</h6>
             <a class="collapse-item" href="normalisasi">Normalisasi Bobot</a>
             <a class="collapse-item" href="rattingkecocokan">Ratting Kecocokan</a>
@@ -57,7 +57,7 @@
           <span>Pages</span>
         </a>
         <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+          <div class="py-2 bg-white rounded collapse-inner">
             <h6 class="collapse-header">Example Pages</h6>
             
             <a class="collapse-item" href="login">Login</a>

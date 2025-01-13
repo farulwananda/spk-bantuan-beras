@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
-    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+<nav class="mb-4 navbar navbar-expand navbar-light bg-navbar topbar static-top">
+    <button id="sidebarToggleTop" class="mr-3 btn btn-link rounded-circle">
       <i class="fa fa-bars"></i>
     </button>
-    <ul class="navbar-nav ml-auto">
+    <ul class="ml-auto navbar-nav">
     
-        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+        <div class="p-3 shadow dropdown-menu dropdown-menu-right animated--grow-in"
           aria-labelledby="searchDropdown">
           <form class="navbar-search">
             <div class="input-group">
@@ -27,24 +27,24 @@
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           <img class="img-profile rounded-circle" src="frontend_dashboard/img/boy.png" style="max-width: 60px">
-          <span class="ml-2 d-none d-lg-inline text-white small">Admin</span>
+          <span class="ml-2 text-white d-none d-lg-inline small">Admin</span>
         </a>
-        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+        <div class="shadow dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="#">
-            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            <i class="mr-2 text-gray-400 fas fa-user fa-sm fa-fw"></i>
             Profile
           </a>
           <a class="dropdown-item" href="#">
-            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+            <i class="mr-2 text-gray-400 fas fa-cogs fa-sm fa-fw"></i>
             Settings
           </a>
           <a class="dropdown-item" href="#">
-            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+            <i class="mr-2 text-gray-400 fas fa-list fa-sm fa-fw"></i>
             Activity Log
           </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="login">
-            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            <i class="mr-2 text-gray-400 fas fa-sign-out-alt fa-sm fa-fw"></i>
             Logout
           </a>
         </div>

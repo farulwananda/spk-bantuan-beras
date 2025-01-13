@@ -26,25 +26,25 @@
 
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          <div class="mb-4 d-sm-flex align-items-center justify-content-between">
+            <h1 class="mb-0 text-gray-800 h3">Dashboard</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
             </ol>
           </div>
 
-          <div class="row mb-3">
+          <div class="mb-3 row">
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="mb-4 col-xl-3 col-md-6">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="row align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Jumlah Calon Penerima</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                      <div class="mt-2 mb-0 text-muted text-xs">
-                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <div class="mr-2 col">
+                      <div class="mb-1 text-xs font-weight-bold text-uppercase">Jumlah Calon Penerima</div>
+                      <div class="mb-0 text-gray-800 h5 font-weight-bold">$40,000</div>
+                      <div class="mt-2 mb-0 text-xs text-muted">
+                        <span class="mr-2 text-success"><i class="fa fa-arrow-up"></i> 3.48%</span>
                         <span>Since last month</span>
                       </div>
                     </div>
@@ -56,15 +56,15 @@
               </div>
             </div>
             <!-- Earnings (Annual) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="mb-4 col-xl-3 col-md-6">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Penerima Bantuan</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
-                      <div class="mt-2 mb-0 text-muted text-xs">
-                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                    <div class="mr-2 col">
+                      <div class="mb-1 text-xs font-weight-bold text-uppercase">Penerima Bantuan</div>
+                      <div class="mb-0 text-gray-800 h5 font-weight-bold">650</div>
+                      <div class="mt-2 mb-0 text-xs text-muted">
+                        <span class="mr-2 text-success"><i class="fas fa-arrow-up"></i> 12%</span>
                         <span>Since last years</span>
                       </div>
                     </div>
@@ -76,15 +76,15 @@
               </div>
             </div>
             <!-- New User Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="mb-4 col-xl-3 col-md-6">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Jumlah User</div>
-                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
-                      <div class="mt-2 mb-0 text-muted text-xs">
-                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                    <div class="mr-2 col">
+                      <div class="mb-1 text-xs font-weight-bold text-uppercase">Jumlah User</div>
+                      <div class="mb-0 mr-3 text-gray-800 h5 font-weight-bold">366</div>
+                      <div class="mt-2 mb-0 text-xs text-muted">
+                        <span class="mr-2 text-success"><i class="fas fa-arrow-up"></i> 20.4%</span>
                         <span>Since last month</span>
                       </div>
                     </div>
@@ -96,15 +96,15 @@
               </div>
             </div>
             <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="mb-4 col-xl-3 col-md-6">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                      <div class="mt-2 mb-0 text-muted text-xs">
-                        <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                    <div class="mr-2 col">
+                      <div class="mb-1 text-xs font-weight-bold text-uppercase">Pending Requests</div>
+                      <div class="mb-0 text-gray-800 h5 font-weight-bold">18</div>
+                      <div class="mt-2 mb-0 text-xs text-muted">
+                        <span class="mr-2 text-danger"><i class="fas fa-arrow-down"></i> 1.10%</span>
                         <span>Since yesterday</span>
                       </div>
                     </div>
@@ -118,15 +118,15 @@
 
             <!-- Area Chart -->
             <div class="col-xl-8 col-lg-7">
-              <div class="card mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <div class="mb-4 card">
+                <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Persentase Penerima Bantuan</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                      <i class="text-gray-400 fas fa-ellipsis-v fa-sm fa-fw"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                    <div class="shadow dropdown-menu dropdown-menu-right animated--fade-in"
                       aria-labelledby="dropdownMenuLink">
                       <div class="dropdown-header">Dropdown Header:</div>
                       <a class="dropdown-item" href="#">Action</a>
@@ -145,15 +145,15 @@
             </div>
             <!-- Pie Chart -->
             <div class="col-xl-4 col-lg-5">
-              <div class="card mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <div class="mb-4 card">
+                <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Products Sold</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle btn btn-primary btn-sm" href="#" role="button" id="dropdownMenuLink"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Month <i class="fas fa-chevron-down"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                    <div class="shadow dropdown-menu dropdown-menu-right animated--fade-in"
                       aria-labelledby="dropdownMenuLink">
                       <div class="dropdown-header">Select Periode</div>
                       <a class="dropdown-item" href="#">Today</a>
@@ -165,8 +165,8 @@
                 </div>
                 <div class="card-body">
                   <div class="mb-3">
-                    <div class="small text-gray-500">Oblong T-Shirt
-                      <div class="small float-right"><b>600 of 800 Items</b></div>
+                    <div class="text-gray-500 small">Oblong T-Shirt
+                      <div class="float-right small"><b>600 of 800 Items</b></div>
                     </div>
                     <div class="progress" style="height: 12px;">
                       <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80"
@@ -174,8 +174,8 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <div class="small text-gray-500">Gundam 90'Editions
-                      <div class="small float-right"><b>500 of 800 Items</b></div>
+                    <div class="text-gray-500 small">Gundam 90'Editions
+                      <div class="float-right small"><b>500 of 800 Items</b></div>
                     </div>
                     <div class="progress" style="height: 12px;">
                       <div class="progress-bar bg-success" role="progressbar" style="width: 70%" aria-valuenow="70"
@@ -183,8 +183,8 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <div class="small text-gray-500">Rounded Hat
-                      <div class="small float-right"><b>455 of 800 Items</b></div>
+                    <div class="text-gray-500 small">Rounded Hat
+                      <div class="float-right small"><b>455 of 800 Items</b></div>
                     </div>
                     <div class="progress" style="height: 12px;">
                       <div class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="55"
@@ -192,8 +192,8 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <div class="small text-gray-500">Indomie Goreng
-                      <div class="small float-right"><b>400 of 800 Items</b></div>
+                    <div class="text-gray-500 small">Indomie Goreng
+                      <div class="float-right small"><b>400 of 800 Items</b></div>
                     </div>
                     <div class="progress" style="height: 12px;">
                       <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
@@ -201,8 +201,8 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <div class="small text-gray-500">Remote Control Car Racing
-                      <div class="small float-right"><b>200 of 800 Items</b></div>
+                    <div class="text-gray-500 small">Remote Control Car Racing
+                      <div class="float-right small"><b>200 of 800 Items</b></div>
                     </div>
                     <div class="progress" style="height: 12px;">
                       <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30"
@@ -210,18 +210,18 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer text-center">
+                <div class="text-center card-footer">
                   <a class="m-0 small text-primary card-link" href="#">View More <i
                       class="fas fa-chevron-right"></i></a>
                 </div>
               </div>
             </div>
             <!-- Invoice Example -->
-            <div class="col-xl-8 col-lg-7 mb-4">
+            <div class="mb-4 col-xl-8 col-lg-7">
               <div class="card">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Invoice</h6>
-                  <a class="m-0 float-right btn btn-danger btn-sm" href="#">View More <i
+                  <a class="float-right m-0 btn btn-danger btn-sm" href="#">View More <i
                       class="fas fa-chevron-right"></i></a>
                 </div>
                 <div class="table-responsive">
@@ -280,7 +280,7 @@
             <!-- Message From Customer-->
             <div class="col-xl-4 col-lg-5 ">
               <div class="card">
-                <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
+                <div class="flex-row py-4 card-header bg-primary d-flex align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-light">Message From Customer</h6>
                 </div>
                 <div>
@@ -288,21 +288,21 @@
                     <a class="font-weight-bold" href="#">
                       <div class="text-truncate message-title">Hi there! I am wondering if you can help me with a
                         problem I've been having.</div>
-                      <div class="small text-gray-500 message-time font-weight-bold">Udin Cilok · 58m</div>
+                      <div class="text-gray-500 small message-time font-weight-bold">Udin Cilok · 58m</div>
                     </a>
                   </div>
                   <div class="customer-message align-items-center">
                     <a href="#">
                       <div class="text-truncate message-title">But I must explain to you how all this mistaken idea
                       </div>
-                      <div class="small text-gray-500 message-time">Nana Haminah · 58m</div>
+                      <div class="text-gray-500 small message-time">Nana Haminah · 58m</div>
                     </a>
                   </div>
                   <div class="customer-message align-items-center">
                     <a class="font-weight-bold" href="#">
                       <div class="text-truncate message-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit
                       </div>
-                      <div class="small text-gray-500 message-time font-weight-bold">Jajang Cincau · 25m</div>
+                      <div class="text-gray-500 small message-time font-weight-bold">Jajang Cincau · 25m</div>
                     </a>
                   </div>
                   <div class="customer-message align-items-center">
@@ -310,10 +310,10 @@
                       <div class="text-truncate message-title">At vero eos et accusamus et iusto odio dignissimos
                         ducimus qui blanditiis
                       </div>
-                      <div class="small text-gray-500 message-time font-weight-bold">Udin Wayang · 54m</div>
+                      <div class="text-gray-500 small message-time font-weight-bold">Udin Wayang · 54m</div>
                     </a>
                   </div>
-                  <div class="card-footer text-center">
+                  <div class="text-center card-footer">
                     <a class="m-0 small text-primary card-link" href="#">View More <i
                         class="fas fa-chevron-right"></i></a>
                   </div>
@@ -324,7 +324,7 @@
           <!--Row-->
 
           <div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="text-center col-lg-12">
               <p>Do you like this template ? you can download from <a href="https://github.com/indrijunanda/RuangAdmin"
                   class="btn btn-primary btn-sm" target="_blank"><i class="fab fa-fw fa-github"></i>&nbsp;GitHub</a></p>
             </div>
@@ -356,17 +356,17 @@
         <!---Container Fluid-->
       </div>
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="bg-white sticky-footer">
         <div class="container my-auto">
-          <div class="copyright text-center my-auto">
+          <div class="my-auto text-center copyright">
             <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
               <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
             </span>
           </div>
         </div>
 
-        <div class="container my-auto py-2">
-          <div class="copyright text-center my-auto">
+        <div class="container py-2 my-auto">
+          <div class="my-auto text-center copyright">
             <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - distributed by
               <b><a href="https://themewagon.com/" target="_blank">themewagon</a></b>
             </span>
@@ -378,7 +378,7 @@
   </div>
 
   <!-- Scroll to top -->
-  <a class="scroll-to-top rounded" href="#page-top">
+  <a class="rounded scroll-to-top" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
 
