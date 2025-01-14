@@ -34,15 +34,21 @@
               <i class="fa-solid fa-sitemap"></i>
               <span>Proses</span>
           </a>
-          <div id="collapseBootstrap" class="collapse {{ request()->is('perangkingan*') || request()->is('normalisasi*') ? 'show' : '' }}" aria-labelledby="headingBootstrap"
-              data-parent="#accordionSidebar">
+          <div id="collapseBootstrap"
+              class="collapse {{ request()->is('perangkingan*') || request()->is('normalisasi*') || request()->is('rating-kecocokan*') || request()->is('hitung-vektor-s*') || request()->is('hitung-vektor-v') ? 'show' : '' }}"
+              aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
               <div class="py-2 bg-white rounded collapse-inner">
                   <h6 class="collapse-header">Proses Perhitungan</h6>
-                  <a class="collapse-item {{ request()->is('normalisasi*') ? 'active' : '' }}" href="{{ route('normalisasi.index') }}">Normalisasi Bobot</a>
-                  <a class="collapse-item" href="rattingkecocokan">Ratting Kecocokan</a>
-                  <a class="collapse-item" href="hitungvektors">Hitung Vektor S</a>
-                  <a class="collapse-item" href="hitungvektorv">Hitung Vektor V</a>
-                  <a class="collapse-item {{ request()->is('perangkingan*') ? 'active' : '' }}" href="{{ route('perangkingan.index') }}">Perangkingan</a>
+                  <a class="collapse-item {{ request()->is('normalisasi*') ? 'active' : '' }}"
+                      href="{{ route('normalisasi.index') }}">Normalisasi Bobot</a>
+                  <a class="collapse-item {{ request()->is('rating-kecocokan*') ? 'active' : '' }}"
+                      href="{{ route('rating.index') }}">Rating Kecocokan</a>
+                  <a class="collapse-item {{ request()->is('hitung-vektor-s*') ? 'active' : '' }}"
+                      href="{{ route('vektor-s.index') }}">Hitung Vektor S</a>
+                  <a class="collapse-item {{ request()->is('hitung-vektor-v*') ? 'active' : '' }}"
+                      href="{{ route('vektor-v.index') }}">Hitung Vektor V</a>
+                  <a class="collapse-item {{ request()->is('perangkingan*') ? 'active' : '' }}"
+                      href="{{ route('perangkingan.index') }}">Perangkingan</a>
               </div>
           </div>
       </li>
