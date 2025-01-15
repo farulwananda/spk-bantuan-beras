@@ -25,6 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/hitung-vektor-s', [VektorController::class, 'indexVektorS'])->name('vektor-s.index');
     Route::get('/hitung-vektor-v', [VektorController::class, 'indexVektorV'])->name('vektor-v.index');
     Route::get('/perangkingan', [PerangkinganController::class, 'index'])->name('perangkingan.index');
+
+    Route::controller(MasyarakatController::class)->group(function () {
+        Route::get('/upload-data-masyarakat', 'uploadPage')->name('masyarakat.upload.page');
+        Route::post('/upload-data-masyarakat', 'uploadProcess')->name('masyarakat.upload.process');
+    });
 });
 
 Route::get('/alerts', [frontendController::class, 'alerts'])->name('alerts');
@@ -36,6 +41,7 @@ Route::get('/form_advanceds', [frontendController::class, 'form_advanceds'])->na
 Route::get('/tambahdatamasyarakat', [frontendController::class, 'tambahdatamasyarakat'])->name('tambahdatamasyarakat');
 Route::get('/tambahdatakriteria', [frontendController::class, 'tambahdatakriteria'])->name('tambahdatakriteria');
 Route::get('/subkriteria', [frontendController::class, 'subkriteria'])->name('subkriteria');
+Route::get('/dashbor', [frontendController::class, 'dashboard']);
 
 Route::get('/test1', [DataController::class, 'import'])->name('test1');
 

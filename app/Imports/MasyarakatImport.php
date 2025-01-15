@@ -2,12 +2,13 @@
 
 namespace App\Imports;
 
-use App\Models\Data;
+use App\Models\Masyarakat;
+use App\Helpers\GenerateKodeHelper;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class DataImport implements ToModel, WithHeadingRow, WithMultipleSheets
+class MasyarakatImport implements ToModel, WithHeadingRow, WithMultipleSheets
 {
     /**
      * @param array $row
@@ -16,8 +17,8 @@ class DataImport implements ToModel, WithHeadingRow, WithMultipleSheets
      */
     public function model(array $row)
     {
-        return new Data([
-            'kode' => $row['no'],
+        return new Masyarakat([
+            'kode' => GenerateKodeHelper::generate(Masyarakat::class, 'A', 'kode'),
             'id_kepala_keluarga' => $row['id_keluarga_p3ke'],
             'provinsi' => $row['provinsi'],
             'kabupaten_kota' => $row['kabupaten_kota'],
