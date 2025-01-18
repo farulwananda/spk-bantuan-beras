@@ -6,6 +6,8 @@ use App\Models\Masyarakat;
 use App\Helpers\GenerateKodeHelper;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class MasyarakatImport implements ToModel, WithHeadingRow, WithMultipleSheets

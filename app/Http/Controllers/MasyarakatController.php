@@ -11,20 +11,52 @@ use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\MasyarakatRequest;
+use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\UploadMasyarakatRequest;
 
 class MasyarakatController extends Controller
 {
     public function index()
     {
-        $masyarakats = Masyarakat::orderBy('kode', 'desc')->get();
+        return view('pages.masyarakat.index');
+    }
 
-        return view('pages.masyarakat.index', compact('masyarakats'));
+    public function getData(Request $request)
+    {
+        $query = Masyarakat::query();
+
+        return DataTables::of($query)
+            ->addIndexColumn()
+            ->addColumn('no', function ($row) {
+                return '';
+            })
+            ->addColumn('action', function ($row) {
+                $actionBtn = '
+                <div class="d-flex justify-content-center">
+                    <button class="mr-2 btn btn-warning btn-sm" title="Edit Data Masyarakat">
+                        <a href="' . route('masyarakat.edit', $row->id) . '">
+                            <i class="fa-solid fa-pen-to-square" style="color: #f6f6f4;"></i>
+                        </a>
+                    </button>
+                    <form action="' . route('masyarakat.destroy', $row->id) . '" method="POST" style="display:inline;" title="Hapus Masyarakat">
+                        ' . csrf_field() . '
+                        ' . method_field('DELETE') . '
+                        <button type="submit" class="btn btn-sm btn-danger delete-button" title="Hapus Data Masyarakat">
+                            <span class="fa-solid fa-trash"></span>
+                        </button>
+                    </form>
+                </div>';
+                return $actionBtn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 
     public function create()
     {
-        return view('pages.masyarakat.create');
+        $generateKode = GenerateKodeHelper::generate(Masyarakat::class, 'A', 'kode');
+
+        return view('pages.masyarakat.create', compact('generateKode'));
     }
 
     public function uploadPage()
@@ -32,28 +64,35 @@ class MasyarakatController extends Controller
         return view('pages.masyarakat.upload');
     }
 
-
-    // DB::transaction(function () use ($path) {
-    //     Masyarakat::truncate();
-
-    //     Excel::import(new MasyarakatImport, storage_path('app/public/' . $path));
-
-    //     Storage::disk('public')->delete($path);
-    // });
     public function uploadProcess(UploadMasyarakatRequest $request)
     {
-        return response()->json(['success' => true, 'message' => 'Controller reached']);
+        try {
+            ini_set('max_execution_time', 300); //! 5 menit
+            ini_set('max_input_time', 300); //! 5 menit
 
-        // try {
-        //     $newfilename = 'excel-file-' . time() . '.' . $request->file('file')->getClientOriginalExtension();
-        //     $path = $request->file('file')->storeAs('temp', $newfilename, 'public');
+            $newfilename = 'excel-file-' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+            $path = $request->file('file')->storeAs('temp', $newfilename, 'public');
 
+            Masyarakat::truncate();
+            Excel::import(new MasyarakatImport, storage_path('app/public/' . $path));
+            Storage::disk('public')->delete($path);
 
+            return response()->json([
+                'success' => true,
+                'message' => 'Data masyarakat successfully imported'
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error('Import Error: ' . $e->getMessage());
 
-        //     return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat imported successfully');
-        // } catch (\Exception $e) {
-        //     return redirect()->back()->with('error', 'Failed to import data masyarakat')->withInput();
-        // }
+            if (isset($path) && Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to import data masyarakat'
+            ], 400);
+        }
     }
 
     public function store(MasyarakatRequest $request, Masyarakat $masyarakat)
@@ -140,7 +179,7 @@ class MasyarakatController extends Controller
     {
         try {
             $masyarakat->delete();
-            GenerateKodeHelper::reorder(Masyarakat::class, 'A', 'kode');
+            // GenerateKodeHelper::reorder(Masyarakat::class, 'A', 'kode');
 
             return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat deleted successfully');
         } catch (\Exception $e) {

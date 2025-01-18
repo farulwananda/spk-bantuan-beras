@@ -8,22 +8,24 @@ class GenerateKodeHelper
 {
     public static function generate($model, $prefix = 'A', $field = 'kode')
     {
-        $latestKode = $model::orderBy($field, 'desc')->first();
+        $latestData = $model::orderByRaw("CAST(SUBSTRING($field, LENGTH('$prefix') + 1) AS UNSIGNED) DESC")->first();
 
-        if (!$latestKode) {
+        if (!$latestData) {
             return $prefix . '1';
         }
 
-        $lastNumber = (int) substr($latestKode->$field, strlen($prefix));
-        $nextNumber = $lastNumber + 1;
+        $latestCode = $latestData->$field;
+        $number = (int) substr($latestCode, strlen($prefix));
+        $nextNumber = $number + 1;
 
         return $prefix . $nextNumber;
     }
 
+
     public static function reorder($model, $prefix = 'A', $field = 'kode')
     {
         return DB::transaction(function () use ($model, $prefix, $field) {
-            $items = $model::orderBy($field)->get();
+            $items = $model::orderByRaw("CAST(SUBSTRING($field, LENGTH('$prefix') + 1) AS UNSIGNED) DESC")->first();
 
             foreach ($items as $key => $item) {
                 $item->update([

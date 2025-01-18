@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/perangkingan', [PerangkinganController::class, 'index'])->name('perangkingan.index');
 
     Route::controller(MasyarakatController::class)->group(function () {
+        Route::get('/masyarakat-data', 'getData')->name('masyarakat.data');
         Route::get('/upload-data-masyarakat', 'uploadPage')->name('masyarakat.upload.page');
         Route::post('/upload-data-masyarakat', 'uploadProcess')->name('masyarakat.upload.process');
     });
