@@ -2,21 +2,33 @@
 
 namespace App\Imports;
 
-use App\Helpers\GenerateKodeHelper;
 use App\Models\Masyarakat;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithMultipleSheets;
+use Illuminate\Support\Facades\DB;
 
-class MasyarakatImport implements ToModel, WithHeadingRow, WithMultipleSheets
+class MasyarakatImport implements ToModel, WithChunkReading, WithBatchInserts, WithHeadingRow
 {
-    /**
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
+    private $counter;
+
+    public function __construct()
+    {
+        $lastCode = DB::table('masyarakats')
+            ->orderBy(DB::raw('CAST(SUBSTRING(kode, 2) AS UNSIGNED)'), 'desc')
+            ->value('kode') ?? 'A0';
+
+        $this->counter = (int)substr($lastCode, 1);
+    }
+
     public function model(array $row)
     {
+        $this->counter++;
+        $newKode = 'A' . $this->counter;
+
         return new Masyarakat([
-            'kode' => GenerateKodeHelper::generate(Masyarakat::class, 'A', 'kode'),
+            'kode' => $newKode,
             'id_kepala_keluarga' => $row['id_keluarga_p3ke'],
             'provinsi' => $row['provinsi'],
             'kabupaten_kota' => $row['kabupaten_kota'],
@@ -39,6 +51,16 @@ class MasyarakatImport implements ToModel, WithHeadingRow, WithMultipleSheets
             'sumber_air_minum' => $row['sumber_air_minum'],
             'fasilitas_bab' => $row['memiliki_fasilitas_buang_air_besar'],
         ]);
+    }
+
+    public function chunkSize(): int
+    {
+        return 1000;
+    }
+
+    public function batchSize(): int
+    {
+        return 1000;
     }
 
     public function sheets(): array
