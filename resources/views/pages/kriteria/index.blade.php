@@ -17,7 +17,8 @@
                     <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Data Kriteria</h6>
                         <div>
-                            <a href="{{ route('masyarakat.create') }}" class="mb-1 btn btn-primary"><i class="fa-solid fa-file-pen"></i> Tambah Data</a>
+                            <a href="{{ route('kriteria.create') }}" class="mb-1 btn btn-primary"><i
+                                    class="fa-solid fa-file-pen"></i> Tambah Data Kriteria</a>
                         </div>
                     </div>
                     <div class="p-3 table-responsive">
@@ -25,29 +26,43 @@
                             <div class="gap-2 d-flex justify-content-end">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th>No</th>
                                         <th>Kode</th>
                                         <th>Nama Kriteria</th>
                                         <th>Bobot</th>
                                         <th>Kategori</th>
-                                        <th>Opsi</th>
+                                        <th width="10%">Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>
-                                            <button class="btn btn-warning"><a href="/tampilupdate/"><i
-                                                        class="fa-solid fa-pen-to-square"
-                                                        style="color: #f6f6f4;"></i></a></button>
-                                            <button class="btn btn-danger"><a href="/deleterumah/ "><i
-                                                        class="fa-solid fa-trash" style="color: #f3f4f7;"></i></a></button>
-                                            <button class="btn btn-primary"><a href=""><i class="fa-solid fa-eye"
-                                                        style="color: #f3f4f7;"></i></a></button>
-                                        </td>
-                                    </tr>
+                                    @foreach ($kriterias as $index => $kriteria)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $kriteria->kode_kriteria }}</td>
+                                            <td>{{ $kriteria->nama_kriteria }}</td>
+                                            <td>{{ $kriteria->bobot_kriteria }}</td>
+                                            <td>{{ Ucfirst($kriteria->tipe_kriteria) }}</td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('kriteria.edit', $kriteria->id) }}"
+                                                        class="mr-2 btn btn-warning">
+                                                        <i class="fa-solid fa-pen-to-square" style="color: #f6f6f4;"></i>
+                                                    </a>
+                                                    <a href="{{ route('kriteria.show', $kriteria->id) }}"
+                                                        class="mr-2 btn btn-primary">
+                                                        <i class="fa-solid fa-eye" style="color: #f3f4f7;"></i>
+                                                    </a>
+                                                    <form action="{{ route('kriteria.destroy', $kriteria->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash" style="color: #f3f4f7;"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </div>
                         </table>

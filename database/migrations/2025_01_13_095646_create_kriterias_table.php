@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_kriteria');
             $table->string('nama_kriteria');
-            $table->string('bobot_kriteria');
+            $table->integer('bobot_kriteria');
             $table->enum('tipe_kriteria', ['benefit', 'cost']);
             $table->timestamps();
         });

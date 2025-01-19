@@ -19,7 +19,6 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::resource('masyarakat', MasyarakatController::class);
-    Route::resource('kriteria', KriteriaController::class);
     Route::get('/normalisasi', [NormalisasiController::class, 'index'])->name('normalisasi.index');
     Route::get('/rating-kecocokan', [RatingKecocokanController::class, 'index'])->name('rating.index');
     Route::get('/hitung-vektor-s', [VektorController::class, 'indexVektorS'])->name('vektor-s.index');
@@ -31,20 +30,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/upload-data-masyarakat', 'uploadPage')->name('masyarakat.upload.page');
         Route::post('/upload-data-masyarakat', 'uploadProcess')->name('masyarakat.upload.process');
     });
+
+    Route::controller(KriteriaController::class)->group(function () {
+        Route::get('/kriteria', 'index')->name('kriteria.index');
+        Route::get('/kriteria/create', 'create')->name('kriteria.create');
+        Route::post('/kriteria', 'store')->name('kriteria.store');
+        Route::get('/kriteria/{kriteria}', 'show')->name('kriteria.show');
+        Route::get('/kriteria/{kriteria}/edit', 'edit')->name('kriteria.edit');
+        Route::put('/kriteria/{kriteria}', 'update')->name('kriteria.update');
+        Route::delete('/kriteria/{kriteria}', 'destroy')->name('kriteria.destroy');
+    });
 });
 
-Route::get('/alerts', [frontendController::class, 'alerts'])->name('alerts');
-Route::get('/progress_bar', [frontendController::class, 'progress_bar'])->name('progress_bar');
-Route::get('/datatables', [frontendController::class, 'datatables'])->name('datatables');
-Route::get('/simple-tables', [frontendController::class, 'simple_tables'])->name('simple-tables');
-Route::get('/form_basics', [frontendController::class, 'form_basics'])->name('form_basics');
-Route::get('/form_advanceds', [frontendController::class, 'form_advanceds'])->name('form_advanceds');
-Route::get('/tambahdatamasyarakat', [frontendController::class, 'tambahdatamasyarakat'])->name('tambahdatamasyarakat');
-Route::get('/tambahdatakriteria', [frontendController::class, 'tambahdatakriteria'])->name('tambahdatakriteria');
 Route::get('/subkriteria', [frontendController::class, 'subkriteria'])->name('subkriteria');
-Route::get('/dashbor', [frontendController::class, 'dashboard']);
-
-Route::get('/test1', [DataController::class, 'import'])->name('test1');
-
 
 require __DIR__ . '/auth.php';
