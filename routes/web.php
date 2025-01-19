@@ -7,6 +7,7 @@ use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\NormalisasiController;
 use App\Http\Controllers\PerangkinganController;
 use App\Http\Controllers\RatingKecocokanController;
+use App\Http\Controllers\SubkriteriaController;
 use App\Http\Controllers\VektorController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,10 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::resource('masyarakat', MasyarakatController::class);
+    Route::resource('kriteria', KriteriaController::class)->parameters(['kriteria' => 'kriteria']);
+    Route::resource('subkriteria', SubkriteriaController::class)->only(['edit', 'update', 'destroy'])->parameters(['subkriteria' => 'subkriteria']);
+    Route::post('kriteria/{kriteria}/subkriteria', [SubkriteriaController::class, 'store'])->name('subkriteria.store');
+
     Route::get('/normalisasi', [NormalisasiController::class, 'index'])->name('normalisasi.index');
     Route::get('/rating-kecocokan', [RatingKecocokanController::class, 'index'])->name('rating.index');
     Route::get('/hitung-vektor-s', [VektorController::class, 'indexVektorS'])->name('vektor-s.index');
@@ -27,16 +32,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/masyarakat-data', 'getData')->name('masyarakat.data');
         Route::get('/upload-data-masyarakat', 'uploadPage')->name('masyarakat.upload.page');
         Route::post('/upload-data-masyarakat', 'uploadProcess')->name('masyarakat.upload.process');
-    });
-
-    Route::controller(KriteriaController::class)->group(function () {
-        Route::get('/kriteria', 'index')->name('kriteria.index');
-        Route::get('/kriteria/create', 'create')->name('kriteria.create');
-        Route::post('/kriteria', 'store')->name('kriteria.store');
-        Route::get('/kriteria/{kriteria}', 'show')->name('kriteria.show');
-        Route::get('/kriteria/{kriteria}/edit', 'edit')->name('kriteria.edit');
-        Route::put('/kriteria/{kriteria}', 'update')->name('kriteria.update');
-        Route::delete('/kriteria/{kriteria}', 'destroy')->name('kriteria.destroy');
     });
 });
 
