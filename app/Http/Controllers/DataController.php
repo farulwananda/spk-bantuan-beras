@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Imports\DataImport;
-use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DataController extends Controller

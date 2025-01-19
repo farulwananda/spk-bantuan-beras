@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Masyarakat extends Model
 {
@@ -39,8 +39,7 @@ class Masyarakat extends Model
     protected function tanggalLahirForInput(): Attribute
     {
         return Attribute::make(
-            get: fn($value, array $attributes) =>
-            isset($attributes['tanggal_lahir'])
+            get: fn ($value, array $attributes) => isset($attributes['tanggal_lahir'])
                 ? Carbon::parse($attributes['tanggal_lahir'])->format('Y-m-d')
                 : null,
         );
@@ -52,8 +51,8 @@ class Masyarakat extends Model
     protected function tanggalLahir(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $value ? Carbon::parse($value)->format('d/m/Y') : null,
-            set: fn($value) => $value ? Carbon::parse($value) : null,
+            get: fn ($value) => $value ? Carbon::parse($value)->format('d/m/Y') : null,
+            set: fn ($value) => $value ? Carbon::parse($value) : null,
         );
     }
 }

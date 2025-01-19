@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\GenerateKodeHelper;
-use App\Models\Kriteria;
-use Illuminate\Http\Request;
 use App\Http\Requests\KriteriaRequest;
+use App\Models\Kriteria;
 
 class KriteriaController extends Controller
 {

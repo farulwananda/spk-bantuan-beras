@@ -2,19 +2,15 @@
 
 namespace App\Imports;
 
-use App\Models\Masyarakat;
 use App\Helpers\GenerateKodeHelper;
+use App\Models\Masyarakat;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithBatchInserts;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class MasyarakatImport implements ToModel, WithHeadingRow, WithMultipleSheets
 {
     /**
-     * @param array $row
-     *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function model(array $row)

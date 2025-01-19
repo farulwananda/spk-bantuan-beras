@@ -10,17 +10,16 @@ class GenerateKodeHelper
     {
         $latestData = $model::orderByRaw("CAST(SUBSTRING($field, LENGTH('$prefix') + 1) AS UNSIGNED) DESC")->first();
 
-        if (!$latestData) {
-            return $prefix . '1';
+        if (! $latestData) {
+            return $prefix.'1';
         }
 
         $latestCode = $latestData->$field;
         $number = (int) substr($latestCode, strlen($prefix));
         $nextNumber = $number + 1;
 
-        return $prefix . $nextNumber;
+        return $prefix.$nextNumber;
     }
-
 
     public static function reorder($model, $prefix = 'A', $field = 'kode')
     {
@@ -29,7 +28,7 @@ class GenerateKodeHelper
 
             foreach ($items as $key => $item) {
                 $item->update([
-                    $field => $prefix . ($key + 1)
+                    $field => $prefix.($key + 1),
                 ]);
             }
 

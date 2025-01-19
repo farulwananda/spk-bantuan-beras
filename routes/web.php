@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DataController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\KriteriaController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\NormalisasiController;
 use App\Http\Controllers\PerangkinganController;
 use App\Http\Controllers\RatingKecocokanController;
 use App\Http\Controllers\VektorController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -44,4 +42,4 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/subkriteria', [frontendController::class, 'subkriteria'])->name('subkriteria');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

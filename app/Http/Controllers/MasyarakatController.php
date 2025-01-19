@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\GenerateKodeHelper;
+use App\Http\Requests\MasyarakatRequest;
+use App\Http\Requests\UploadMasyarakatRequest;
+use App\Imports\MasyarakatImport;
 use App\Models\Masyarakat;
 use Illuminate\Http\Request;
-use App\Imports\MasyarakatImport;
-use Illuminate\Support\Facades\DB;
-use App\Helpers\GenerateKodeHelper;
 use Illuminate\Support\Facades\Log;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\MasyarakatRequest;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
-use App\Http\Requests\UploadMasyarakatRequest;
 
 class MasyarakatController extends Controller
 {
@@ -34,18 +33,19 @@ class MasyarakatController extends Controller
                 $actionBtn = '
                 <div class="d-flex justify-content-center">
                     <button class="mr-2 btn btn-warning btn-sm" title="Edit Data Masyarakat">
-                        <a href="' . route('masyarakat.edit', $row->id) . '">
+                        <a href="'.route('masyarakat.edit', $row->id).'">
                             <i class="fa-solid fa-pen-to-square" style="color: #f6f6f4;"></i>
                         </a>
                     </button>
-                    <form action="' . route('masyarakat.destroy', $row->id) . '" method="POST" style="display:inline;" title="Hapus Masyarakat">
-                        ' . csrf_field() . '
-                        ' . method_field('DELETE') . '
+                    <form action="'.route('masyarakat.destroy', $row->id).'" method="POST" style="display:inline;" title="Hapus Masyarakat">
+                        '.csrf_field().'
+                        '.method_field('DELETE').'
                         <button type="submit" class="btn btn-sm btn-danger delete-button" title="Hapus Data Masyarakat">
                             <span class="fa-solid fa-trash"></span>
                         </button>
                     </form>
                 </div>';
+
                 return $actionBtn;
             })
             ->rawColumns(['action'])
@@ -70,19 +70,19 @@ class MasyarakatController extends Controller
             ini_set('max_execution_time', 300); //! 5 menit
             ini_set('max_input_time', 300); //! 5 menit
 
-            $newfilename = 'excel-file-' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+            $newfilename = 'excel-file-'.time().'.'.$request->file('file')->getClientOriginalExtension();
             $path = $request->file('file')->storeAs('temp', $newfilename, 'public');
 
             Masyarakat::truncate();
-            Excel::import(new MasyarakatImport, storage_path('app/public/' . $path));
+            Excel::import(new MasyarakatImport, storage_path('app/public/'.$path));
             Storage::disk('public')->delete($path);
 
             return response()->json([
                 'success' => true,
-                'message' => 'Data masyarakat successfully imported'
+                'message' => 'Data masyarakat successfully imported',
             ], 200);
         } catch (\Exception $e) {
-            Log::error('Import Error: ' . $e->getMessage());
+            Log::error('Import Error: '.$e->getMessage());
 
             if (isset($path) && Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->delete($path);
@@ -90,7 +90,7 @@ class MasyarakatController extends Controller
 
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to import data masyarakat'
+                'message' => 'Failed to import data masyarakat',
             ], 400);
         }
     }
@@ -125,7 +125,8 @@ class MasyarakatController extends Controller
 
             return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat created successfully');
         } catch (\Exception $e) {
-            Log::error('Failed to create data masyarakat: ' . $e->getMessage());
+            Log::error('Failed to create data masyarakat: '.$e->getMessage());
+
             return redirect()->back()->with('error', 'Failed to create data masyarakat')->withInput();
         }
     }
@@ -170,7 +171,8 @@ class MasyarakatController extends Controller
 
             return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat updated successfully');
         } catch (\Exception $e) {
-            Log::error('Failed to update data masyarakat: ' . $e->getMessage());
+            Log::error('Failed to update data masyarakat: '.$e->getMessage());
+
             return redirect()->back()->with('error', 'Failed to update data masyarakat')->withInput();
         }
     }
@@ -183,7 +185,8 @@ class MasyarakatController extends Controller
 
             return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat deleted successfully');
         } catch (\Exception $e) {
-            Log::error('Failed to delete data masyarakat: ' . $e->getMessage());
+            Log::error('Failed to delete data masyarakat: '.$e->getMessage());
+
             return redirect()->back()->with('error', 'Failed to delete data masyarakat');
         }
     }
