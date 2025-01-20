@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VektorController;
+use App\Http\Controllers\DataSiapController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\NormalisasiController;
+use App\Http\Controllers\SubkriteriaController;
 use App\Http\Controllers\PerangkinganController;
 use App\Http\Controllers\RatingKecocokanController;
-use App\Http\Controllers\SubkriteriaController;
-use App\Http\Controllers\VektorController;
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -22,6 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('subkriteria', SubkriteriaController::class)->only(['edit', 'update', 'destroy'])->parameters(['subkriteria' => 'subkriteria']);
     Route::post('kriteria/{kriteria}/subkriteria', [SubkriteriaController::class, 'store'])->name('subkriteria.store');
 
+    Route::get('/data-siap', [DataSiapController::class, 'index'])->name('data-siap.index');
+    Route::post('/data-siap', [DataSiapController::class, 'proses'])->name('data-siap.proses');
+    Route::get('/raw-data-siap', [DataSiapController::class, 'data'])->name('data-siap.data');
     Route::get('/normalisasi', [NormalisasiController::class, 'index'])->name('normalisasi.index');
     Route::get('/rating-kecocokan', [RatingKecocokanController::class, 'index'])->name('rating.index');
     Route::get('/hitung-vektor-s', [VektorController::class, 'indexVektorS'])->name('vektor-s.index');
@@ -37,4 +41,4 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/subkriteria', [frontendController::class, 'subkriteria'])->name('subkriteria');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

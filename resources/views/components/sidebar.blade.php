@@ -35,10 +35,12 @@
               <span>Proses</span>
           </a>
           <div id="collapseBootstrap"
-              class="collapse {{ request()->is('perangkingan*') || request()->is('normalisasi*') || request()->is('rating-kecocokan*') || request()->is('hitung-vektor-s*') || request()->is('hitung-vektor-v') ? 'show' : '' }}"
+              class="collapse {{ request()->is('perangkingan*') || request()->is('normalisasi*') || request()->is('rating-kecocokan*') || request()->is('hitung-vektor-s*') || request()->is('hitung-vektor-v*') || request()->is('data-siap*') ? 'show' : '' }}"
               aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
               <div class="py-2 bg-white rounded collapse-inner">
                   <h6 class="collapse-header">Proses Perhitungan</h6>
+                  <a class="collapse-item {{ request()->is('data-siap*') ? 'active' : '' }}"
+                      href="{{ route('data-siap.index') }}">Data Siap</a>
                   <a class="collapse-item {{ request()->is('normalisasi*') ? 'active' : '' }}"
                       href="{{ route('normalisasi.index') }}">Normalisasi Bobot</a>
                   <a class="collapse-item {{ request()->is('rating-kecocokan*') ? 'active' : '' }}"

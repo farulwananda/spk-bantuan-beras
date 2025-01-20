@@ -20,7 +20,7 @@ class SubKriteriaSeeder extends Seeder
                 ['nama_subkriteria' => 'Wiraswasta', 'nilai' => 4],
                 ['nama_subkriteria' => 'Lainnya', 'nilai' => 3],
                 ['nama_subkriteria' => 'Pekerja Lepas', 'nilai' => 2],
-                ['nama_subkriteria' => 'Tidak/Belum Bekerja', 'nilai' => 1],
+                ['nama_subkriteria' => 'Tidak/belum bekerja', 'nilai' => 1],
             ],
             'C2' => [
                 ['nama_subkriteria' => 'Milik Sendiri', 'nilai' => 4],

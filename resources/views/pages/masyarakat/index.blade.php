@@ -23,6 +23,17 @@
                             <a href="{{ route('masyarakat.create') }}" class="mb-1 btn btn-primary">
                                 <i class="fa-solid fa-file-pen"></i> Tambah Data
                             </a>
+                            @if (session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+                            <form action="{{ route('data-siap.proses') }}" method="POST" class="d-inline">
+                                @csrf
+                                <button type="submit" class="mb-1 btn btn-warning">
+                                    <i class="fa fa-refresh"></i> Proses Data
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="p-3 table-responsive">
