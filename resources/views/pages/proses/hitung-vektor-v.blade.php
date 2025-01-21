@@ -16,7 +16,7 @@
                 <div class="mb-4 card">
                     <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Hitung Vektor V</h6>
-                        <form action="{{ route('vektor-s.proses') }}" method="POST" class="d-inline">
+                        <form action="{{ route('vektor-v.proses') }}" method="POST" class="d-inline">
                             @csrf
                             <button type="submit" class="mb-1 btn btn-primary">
                                 <i class="fa fa-refresh"></i> Proses Vektor V

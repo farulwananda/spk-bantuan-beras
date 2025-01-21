@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\GenerateKodeHelper;
-use App\Http\Requests\MasyarakatRequest;
-use App\Http\Requests\UploadMasyarakatRequest;
-use App\Imports\MasyarakatImport;
+use App\Models\DataSiap;
 use App\Models\Masyarakat;
 use Illuminate\Http\Request;
+use App\Imports\MasyarakatImport;
+use App\Helpers\GenerateKodeHelper;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\MasyarakatRequest;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\UploadMasyarakatRequest;
+use App\Models\Normalisasi;
 
 class MasyarakatController extends Controller
 {
@@ -74,6 +76,9 @@ class MasyarakatController extends Controller
             $path = $request->file('file')->storeAs('temp', $newfilename, 'public');
 
             Masyarakat::truncate();
+            DataSiap::truncate();
+            Normalisasi::truncate();
+
             Excel::import(new MasyarakatImport, storage_path('app/public/' . $path));
             Storage::disk('public')->delete($path);
 
