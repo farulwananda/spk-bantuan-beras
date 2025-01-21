@@ -5,23 +5,25 @@
 @section('content')
     <div class="container-fluid" id="container-wrapper">
         <div class="mb-4 d-sm-flex align-items-center justify-content-between">
-            <h1 class="mb-0 text-gray-800 h3">Proses Data Masyarakat</h1>
+            <h1 class="mb-0 text-gray-800 h3">Rating Kecocokan</h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Proses Data Masyarakat</li>
+                <li class="breadcrumb-item active" aria-current="page">Rating Kecocokan</li>
             </ol>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="mb-4 card">
                     <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Proses Data Masyarakat</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Rating Kecocokan</h6>
                     </div>
                     <div class="p-3 table-responsive">
                         <table class="table align-items-center table-flush" id="dataTable">
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
+                                    <th>NIK</th>
+                                    <th>Nama</th>
                                     <th>Kode</th>
                                     <th>C1</th>
                                     <th>C2</th>
@@ -57,6 +59,14 @@
                         render: function(data, type, row, meta) {
                             return meta.row + meta.settings._iDisplayStart + 1;
                         }
+                    },
+                    {
+                        data: 'nik',
+                        name: 'nik'
+                    },
+                    {
+                        data: 'kepala_keluarga',
+                        name: 'kepala_keluarga'
                     },
                     {
                         data: 'kode',

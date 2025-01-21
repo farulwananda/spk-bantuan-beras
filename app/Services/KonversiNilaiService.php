@@ -84,6 +84,8 @@ class KonversiNilaiService
                 $this->validateData($orang);
 
                 $nilaiKonversi = [
+                    'nik' => $orang->nik,
+                    'kepala_keluarga' => $orang->kepala_keluarga,
                     'kode' => $orang->kode,
                     'proses' => 'raw'
                 ];

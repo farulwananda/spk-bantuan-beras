@@ -40,11 +40,9 @@
               <div class="py-2 bg-white rounded collapse-inner">
                   <h6 class="collapse-header">Proses Perhitungan</h6>
                   <a class="collapse-item {{ request()->is('data-siap*') ? 'active' : '' }}"
-                      href="{{ route('data-siap.index') }}">Data Siap</a>
+                      href="{{ route('data-siap.index') }}">Rating Kecocokan</a>
                   <a class="collapse-item {{ request()->is('normalisasi*') ? 'active' : '' }}"
                       href="{{ route('normalisasi.index') }}">Normalisasi Bobot</a>
-                  <a class="collapse-item {{ request()->is('rating-kecocokan*') ? 'active' : '' }}"
-                      href="{{ route('rating.index') }}">Rating Kecocokan</a>
                   <a class="collapse-item {{ request()->is('hitung-vektor-s*') ? 'active' : '' }}"
                       href="{{ route('vektor-s.index') }}">Hitung Vektor S</a>
                   <a class="collapse-item {{ request()->is('hitung-vektor-v*') ? 'active' : '' }}"

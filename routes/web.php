@@ -23,13 +23,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('subkriteria', SubkriteriaController::class)->only(['edit', 'update', 'destroy'])->parameters(['subkriteria' => 'subkriteria']);
     Route::post('kriteria/{kriteria}/subkriteria', [SubkriteriaController::class, 'store'])->name('subkriteria.store');
 
+    Route::post('normalisasi', [NormalisasiController::class, 'prosesNormalisasi'])->name('normalisasi.proses');
     Route::get('/data-siap', [DataSiapController::class, 'index'])->name('data-siap.index');
     Route::post('/data-siap', [DataSiapController::class, 'proses'])->name('data-siap.proses');
     Route::get('/raw-data-siap', [DataSiapController::class, 'data'])->name('data-siap.data');
     Route::get('/normalisasi', [NormalisasiController::class, 'index'])->name('normalisasi.index');
     Route::get('/rating-kecocokan', [RatingKecocokanController::class, 'index'])->name('rating.index');
     Route::get('/hitung-vektor-s', [VektorController::class, 'indexVektorS'])->name('vektor-s.index');
+    Route::post('/hitung-vektor-s', [VektorController::class, 'prosesVektorS'])->name('vektor-s.proses');
     Route::get('/hitung-vektor-v', [VektorController::class, 'indexVektorV'])->name('vektor-v.index');
+    Route::post('/hitung-vektor-v', [VektorController::class, 'prosesVektorV'])->name('vektor-v.proses');
     Route::get('/perangkingan', [PerangkinganController::class, 'index'])->name('perangkingan.index');
 
     Route::controller(MasyarakatController::class)->group(function () {

@@ -16,17 +16,18 @@
                 <div class="mb-4 card">
                     <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Hitung Vektor V</h6>
-                        <div>
-                            <a href="#" class="mb-1 btn btn-primary"><i class="fa fa-refresh"></i> Proses Vektor V</a>
-                        </div>
+                        <form action="{{ route('vektor-s.proses') }}" method="POST" class="d-inline">
+                            @csrf
+                            <button type="submit" class="mb-1 btn btn-primary">
+                                <i class="fa fa-refresh"></i> Proses Vektor V
+                            </button>
+                        </form>
                     </div>
                     <div class="p-3 table-responsive">
                         <table class="table align-items-center table-flush" id="dataTable">
                             <div class="gap-2 d-flex justify-content-end">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>NIK</th>
-                                        <th>Nama</th>
                                         <th>Kode</th>
                                         <th>C1</th>
                                         <th>C2</th>
@@ -37,23 +38,25 @@
                                         <th>C7</th>
                                         <th>C8</th>
                                         <th>C9</th>
+                                        <th>Vektor V</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>61</td>
-                                        <td>61</td>
-                                        <td>61</td>
-                                        <td>61</td>
-                                        <td>61</td>
-                                        <td>61</td>
-                                        <td>61</td>
-                                        <td>61</td>
-                                    </tr>
+                                    @foreach ($vektorV as $vektorV)
+                                        <tr>
+                                            <td>{{ $vektorV->kode }}</td>
+                                            <td>{{ $vektorV->C1 }}</td>
+                                            <td>{{ $vektorV->C2 }}</td>
+                                            <td>{{ $vektorV->C3 }}</td>
+                                            <td>{{ $vektorV->C4 }}</td>
+                                            <td>{{ $vektorV->C5 }}</td>
+                                            <td>{{ $vektorV->C6 }}</td>
+                                            <td>{{ $vektorV->C7 }}</td>
+                                            <td>{{ $vektorV->C8 }}</td>
+                                            <td>{{ $vektorV->C9 }}</td>
+                                            <td>{{ $vektorV->vektor_v ?? 'Belum Terproses' }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </div>
                         </table>

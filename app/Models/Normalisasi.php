@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DataSiap extends Model
+class Normalisasi extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nik',
-        'kepala_keluarga',
-        'kode',
         'C1',
         'C2',
         'C3',
@@ -22,8 +19,5 @@ class DataSiap extends Model
         'C7',
         'C8',
         'C9',
-        'vektor_s',
-        'vektor_v',
-        'proses',
     ];
 }

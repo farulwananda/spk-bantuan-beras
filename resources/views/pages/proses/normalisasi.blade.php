@@ -16,38 +16,43 @@
                 <div class="mb-4 card">
                     <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Normalisasi Bobot</h6>
-                        <div>
-                            <a href="#" class="mb-1 btn btn-primary"><i class="fa fa-refresh"></i> Proses Normalisasi</a>
-                        </div>
+                        <form action="{{ route('normalisasi.proses') }}" method="POST" class="d-inline">
+                            @csrf
+                            <button type="submit" class="mb-1 btn btn-primary">
+                                <i class="fa fa-refresh"></i> Proses Normalisasi
+                            </button>
+                        </form>
                     </div>
                     <div class="p-3 table-responsive">
                         <table class="table align-items-center table-flush" id="dataTable">
                             <div class="gap-2 d-flex justify-content-end">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>Kode</th>
-                                        <th>Nama Kriteria</th>
-                                        <th>Bobot</th>
-                                        <th>Kategori</th>
-                                        <th>Opsi</th>
+                                        <th>C1</th>
+                                        <th>C2</th>
+                                        <th>C3</th>
+                                        <th>C4</th>
+                                        <th>C5</th>
+                                        <th>C6</th>
+                                        <th>C7</th>
+                                        <th>C8</th>
+                                        <th>C9</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>
-                                            <button class="btn btn-warning"><a href="/tampilupdate/"><i
-                                                        class="fa-solid fa-pen-to-square"
-                                                        style="color: #f6f6f4;"></i></a></button>
-                                            <button class="btn btn-danger"><a href="/deleterumah/ "><i
-                                                        class="fa-solid fa-trash" style="color: #f3f4f7;"></i></a></button>
-                                            <button class="btn btn-primary"><a href=""><i class="fa-solid fa-eye"
-                                                        style="color: #f3f4f7;"></i></a></button>
-                                        </td>
-                                    </tr>
+                                    @foreach ($dataNormalisasis as $dataNormalisasi)
+                                        <tr>
+                                            <td>{{ $dataNormalisasi->C1 }}</td>
+                                            <td>{{ $dataNormalisasi->C2 }}</td>
+                                            <td>{{ $dataNormalisasi->C3 }}</td>
+                                            <td>{{ $dataNormalisasi->C4 }}</td>
+                                            <td>{{ $dataNormalisasi->C5 }}</td>
+                                            <td>{{ $dataNormalisasi->C6 }}</td>
+                                            <td>{{ $dataNormalisasi->C7 }}</td>
+                                            <td>{{ $dataNormalisasi->C8 }}</td>
+                                            <td>{{ $dataNormalisasi->C9 }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </div>
                         </table>
