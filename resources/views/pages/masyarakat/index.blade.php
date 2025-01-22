@@ -11,6 +11,22 @@
                 <li class="breadcrumb-item active" aria-current="page">Data Masyarakat</li>
             </ol>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-12">
                 <div class="mb-4 card">
@@ -23,11 +39,6 @@
                             <a href="{{ route('masyarakat.create') }}" class="mb-1 btn btn-primary">
                                 <i class="fa-solid fa-file-pen"></i> Tambah Data
                             </a>
-                            @if (session('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                            @endif
                             <form action="{{ route('data-siap.proses') }}" method="POST" class="d-inline">
                                 @csrf
                                 <button type="submit" class="mb-1 btn btn-warning">

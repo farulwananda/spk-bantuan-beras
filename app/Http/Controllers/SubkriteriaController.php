@@ -26,7 +26,7 @@ class SubkriteriaController extends Controller
             'nilai' => $request->nilai,
         ]);
 
-        return redirect()->route('kriteria.show', $kriteriaId)->with('success', 'Data Sub Kriteria successfully added');
+        return redirect()->route('kriteria.show', $kriteriaId)->with('success', 'Data Sub Kriteria telah berhasil ditambahkan');
     }
 
     /**
@@ -51,7 +51,7 @@ class SubkriteriaController extends Controller
             'nilai' => $request->nilai,
         ]);
 
-        return redirect()->route('kriteria.show', $subKriteria->kriteria_id)->with('success', 'Data Sub Kriteria successfully updated');
+        return redirect()->route('kriteria.show', $subKriteria->kriteria_id)->with('success', 'Data Sub Kriteria telah berhasil diupdate');
     }
 
     /**
@@ -62,6 +62,6 @@ class SubkriteriaController extends Controller
         $subKriteria = SubKriteria::findOrFail($id);
         $subKriteria->delete();
 
-        return redirect()->back()->with('success', 'Data Sub Kriteria successfully deleted');
+        return redirect()->back()->with('success', 'Data Sub Kriteria telah berhasil dihapus');
     }
 }

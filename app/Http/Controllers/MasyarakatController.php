@@ -82,10 +82,7 @@ class MasyarakatController extends Controller
             Excel::import(new MasyarakatImport, storage_path('app/public/' . $path));
             Storage::disk('public')->delete($path);
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Data masyarakat successfully imported',
-            ], 200);
+            return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat telah berhasil diimport');
         } catch (\Exception $e) {
             Log::error('Import Error: ' . $e->getMessage());
 
@@ -93,10 +90,7 @@ class MasyarakatController extends Controller
                 Storage::disk('public')->delete($path);
             }
 
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to import data masyarakat',
-            ], 400);
+            return redirect()->back()->with('error', 'Gagal mengimport data masyarakat dengan pesan: ' . $e->getMessage());
         }
     }
 
@@ -128,11 +122,11 @@ class MasyarakatController extends Controller
                 'fasilitas_bab' => $request->fasilitas_bab,
             ]);
 
-            return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat created successfully');
+            return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat telah berhasil dibuat');
         } catch (\Exception $e) {
-            Log::error('Failed to create data masyarakat: ' . $e->getMessage());
+            Log::error('Gagal membuat data masyarakat: ' . $e->getMessage());
 
-            return redirect()->back()->with('error', 'Failed to create data masyarakat')->withInput();
+            return redirect()->back()->with('error', 'Gagal membuat data masyarakat')->withInput();
         }
     }
 
@@ -174,11 +168,11 @@ class MasyarakatController extends Controller
                 'fasilitas_bab' => $request->fasilitas_bab,
             ]);
 
-            return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat updated successfully');
+            return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat telah berhasil diupdate');
         } catch (\Exception $e) {
-            Log::error('Failed to update data masyarakat: ' . $e->getMessage());
+            Log::error('Gagal mengupdate data masyarakat: ' . $e->getMessage());
 
-            return redirect()->back()->with('error', 'Failed to update data masyarakat')->withInput();
+            return redirect()->back()->with('error', 'Gagal mengupdate data masyarakat')->withInput();
         }
     }
 
@@ -188,11 +182,11 @@ class MasyarakatController extends Controller
             $masyarakat->delete();
             // GenerateKodeHelper::reorder(Masyarakat::class, 'A', 'kode');
 
-            return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat deleted successfully');
+            return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat telah berhasil dihapus');
         } catch (\Exception $e) {
-            Log::error('Failed to delete data masyarakat: ' . $e->getMessage());
+            Log::error('Gagal menghapus data masyarakat: ' . $e->getMessage());
 
-            return redirect()->back()->with('error', 'Failed to delete data masyarakat');
+            return redirect()->back()->with('error', 'Gagal menghapus data masyarakat');
         }
     }
 }

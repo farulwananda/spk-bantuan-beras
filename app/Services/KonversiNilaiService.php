@@ -74,7 +74,10 @@ class KonversiNilaiService
         $masyarakat = Masyarakat::all();
 
         if ($masyarakat->isEmpty()) {
-            throw new Exception('Data masyarakat kosong');
+            return [
+                'success' => false,
+                'message' => 'Proses konversi data gagal karena data masyarakat kosong'
+            ];
         }
 
         try {

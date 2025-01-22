@@ -1,5 +1,7 @@
 <?php
 
+use App\Exports\MasyarakatExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VektorController;
 use App\Http\Controllers\DataSiapController;
@@ -22,7 +24,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('kriteria', KriteriaController::class)->parameters(['kriteria' => 'kriteria']);
     Route::resource('subkriteria', SubkriteriaController::class)->only(['edit', 'update', 'destroy'])->parameters(['subkriteria' => 'subkriteria']);
     Route::post('kriteria/{kriteria}/subkriteria', [SubkriteriaController::class, 'store'])->name('subkriteria.store');
-
     Route::post('normalisasi', [NormalisasiController::class, 'prosesNormalisasi'])->name('normalisasi.proses');
     Route::get('/data-siap', [DataSiapController::class, 'index'])->name('data-siap.index');
     Route::post('/data-siap', [DataSiapController::class, 'proses'])->name('data-siap.proses');
@@ -34,14 +35,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/hitung-vektor-v', [VektorController::class, 'indexVektorV'])->name('vektor-v.index');
     Route::post('/hitung-vektor-v', [VektorController::class, 'prosesVektorV'])->name('vektor-v.proses');
     Route::get('/perangkingan', [PerangkinganController::class, 'index'])->name('perangkingan.index');
-
+    Route::get('/perangkingan-data', [PerangkinganController::class, 'data'])->name('perangkingan.data');
+    Route::get('/export-masyarakat', [PerangkinganController::class, 'export'])->name('masyarakat.export');
     Route::controller(MasyarakatController::class)->group(function () {
         Route::get('/masyarakat-data', 'getData')->name('masyarakat.data');
         Route::get('/upload-data-masyarakat', 'uploadPage')->name('masyarakat.upload.page');
         Route::post('/upload-data-masyarakat', 'uploadProcess')->name('masyarakat.upload.process');
     });
 });
-
-Route::get('/subkriteria', [frontendController::class, 'subkriteria'])->name('subkriteria');
 
 require __DIR__ . '/auth.php';

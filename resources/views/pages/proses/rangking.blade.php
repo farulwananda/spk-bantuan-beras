@@ -11,14 +11,21 @@
                 <li class="breadcrumb-item active" aria-current="page">Perangkingan</li>
             </ol>
         </div>
+        @if (session('error'))
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-12">
                 <div class="mb-4 card">
                     <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Perangkingan</h6>
                         <div>
-                            <a href="#" class="mb-1 btn btn-success"><i class="fa-solid fa-file-excel"></i> Cetak</a>
-                            <a href="#" class="mb-1 btn btn-primary"><i class="fa fa-refresh"></i> Proses Perangkingan</a>
+                            <a href="{{ route('masyarakat.export') }}" class="mb-1 btn btn-success"><i class="fa-solid fa-file-excel"></i> Cetak</a>
                         </div>
                     </div>
                     <div class="p-3 table-responsive">
@@ -26,18 +33,13 @@
                             <div class="gap-2 d-flex justify-content-end">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>Kode</th>
+                                        <th>No</th>
+                                        <th>NIK</th>
                                         <th>Nama</th>
-                                        <th>Hasil</th>
+                                        <th>Kode</th>
+                                        <th>Nilai</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>T001</td>
-                                        <td>Test Account</td>
-                                        <td>Layak</td>
-                                    </tr>
-                                </tbody>
                             </div>
                         </table>
                     </div>
@@ -51,8 +53,45 @@
     <script src="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#dataTable').DataTable();
-            $('#dataTableHover').DataTable();
+            $('#dataTable').DataTable({
+                processing: true,
+                serverSide: true,
+                order: [
+                    [4, 'desc']
+                ],
+                ajax: "{{ route('data-siap.data') }}",
+                columns: [{
+                        data: null,
+                        name: 'no',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        },
+                        orderable: false
+                    },
+                    {
+                        data: 'nik',
+                        name: 'nik',
+                        orderable: false
+                    },
+                    {
+                        data: 'kepala_keluarga',
+                        name: 'kepala_keluarga',
+                        orderable: false
+                    },
+                    {
+                        data: 'kode',
+                        name: 'kode',
+                        orderable: false
+                    },
+                    {
+                        data: 'vektor_v',
+                        name: 'vektor_v',
+                        render: function(data, type, row) {
+                        return data ? data : 'Vektor V Belum Diproses';
+                    }
+                    }
+                ]
+            });
         });
     </script>
 @endpush
