@@ -8,9 +8,8 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class MasyarakatImport implements ToModel, WithChunkReading, WithBatchInserts, WithHeadingRow, SkipsEmptyRows
+class MasyarakatImport implements ToModel, WithChunkReading, WithBatchInserts, WithHeadingRow
 {
     private $counter;
 
@@ -25,36 +24,6 @@ class MasyarakatImport implements ToModel, WithChunkReading, WithBatchInserts, W
 
     public function model(array $row)
     {
-        $requiredFields = [
-            'id_keluarga_p3ke',
-            'provinsi',
-            'kabupaten_kota',
-            'kecamatan',
-            'desa_kelurahan',
-            'desil_kesejahteraan',
-            'alamat',
-            'kepala_keluarga',
-            'nik',
-            'padan_dukcapil',
-            'jenis_kelamin',
-            'tanggal_lahir',
-            'pekerjaan',
-            'kepemilikan_rumah',
-            'jenis_atap',
-            'jenis_dinding',
-            'jenis_lantai',
-            'sumber_penerangan',
-            'bahan_bakar_memasak',
-            'sumber_air_minum',
-            'memiliki_fasilitas_buang_air_besar'
-        ];
-
-        foreach ($requiredFields as $field) {
-            if (!isset($row[$field]) || trim($row[$field]) === '') {
-                return null;
-            }
-        }
-
         $this->counter++;
         $newKode = 'A' . $this->counter;
 

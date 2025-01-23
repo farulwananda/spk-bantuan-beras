@@ -68,31 +68,21 @@ class MasyarakatController extends Controller
 
     public function uploadProcess(UploadMasyarakatRequest $request)
     {
-        try {
-            ini_set('max_execution_time', 600); //! 5 menit
-            ini_set('max_input_time', 600);
-            ini_set('memory_limit', '2048M');
+        ini_set('max_execution_time', 600); //! 5 menit
+        ini_set('max_input_time', 600);
+        ini_set('memory_limit', '2048M');
 
-            $newfilename = 'excel-file-' . time() . '.' . $request->file('file')->getClientOriginalExtension();
-            $path = $request->file('file')->storeAs('temp', $newfilename, 'public');
+        $newfilename = 'excel-file-' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+        $path = $request->file('file')->storeAs('temp', $newfilename, 'public');
 
-            Masyarakat::truncate();
-            DataSiap::truncate();
-            Normalisasi::truncate();
+        Masyarakat::truncate();
+        DataSiap::truncate();
+        Normalisasi::truncate();
 
-            Excel::import(new MasyarakatImport, storage_path('app/public/' . $path));
-            Storage::disk('public')->delete($path);
+        Excel::import(new MasyarakatImport, storage_path('app/public/' . $path));
+        Storage::disk('public')->delete($path);
 
-            return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat telah berhasil diimport');
-        } catch (\Exception $e) {
-            Log::error('Import Error: ' . $e->getMessage());
-
-            if (isset($path) && Storage::disk('public')->exists($path)) {
-                Storage::disk('public')->delete($path);
-            }
-
-            return redirect()->back()->with('error', 'Gagal mengimport data masyarakat dengan pesan: ' . $e->getMessage());
-        }
+        return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat telah berhasil diimport');
     }
 
     public function store(MasyarakatRequest $request, Masyarakat $masyarakat)
