@@ -8,8 +8,9 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class MasyarakatImport implements ToModel, WithChunkReading, WithBatchInserts, WithHeadingRow
+class MasyarakatImport implements ToModel, WithChunkReading, WithBatchInserts, WithHeadingRow, WithMultipleSheets
 {
     private $counter;
 

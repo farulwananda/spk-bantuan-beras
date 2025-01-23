@@ -91,7 +91,7 @@ class MasyarakatController extends Controller
                 Storage::disk('public')->delete($path);
             }
 
-            return redirect()->route('masyarakat.index')->with('success', 'Data masyarakat telah berhasil diimport');
+            return redirect()->route('masyarakat.index')->with('error', 'Data masyarakat telah berhasil diimport namun terdapat kesalahan: ' . $e->getMessage());
         }
     }
 
