@@ -55,12 +55,12 @@ class MasyarakatImport implements ToModel, WithChunkReading, WithBatchInserts, W
 
     public function chunkSize(): int
     {
-        return 100;
+        return 500;
     }
 
     public function batchSize(): int
     {
-        return 100;
+        return 500;
     }
 
     public function sheets(): array
