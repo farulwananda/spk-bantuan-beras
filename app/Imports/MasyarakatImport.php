@@ -25,6 +25,10 @@ class MasyarakatImport implements ToModel, WithChunkReading, WithBatchInserts, W
 
     public function model(array $row)
     {
+        if (empty(array_filter($row))) {
+            return null;
+        }
+
         $this->counter++;
         $newKode = 'A' . $this->counter;
 
