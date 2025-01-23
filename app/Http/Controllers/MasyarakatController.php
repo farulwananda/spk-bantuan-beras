@@ -69,8 +69,9 @@ class MasyarakatController extends Controller
     public function uploadProcess(UploadMasyarakatRequest $request)
     {
         try {
-            ini_set('max_execution_time', 300); //! 5 menit
-            ini_set('max_input_time', 300); //! 5 menit
+            ini_set('max_execution_time', 600); //! 5 menit
+            ini_set('max_input_time', 600);
+            ini_set('memory_limit', '2048M');
 
             $newfilename = 'excel-file-' . time() . '.' . $request->file('file')->getClientOriginalExtension();
             $path = $request->file('file')->storeAs('temp', $newfilename, 'public');
