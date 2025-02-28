@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/perangkingan', [PerangkinganController::class, 'index'])->name('perangkingan.index');
     Route::get('/perangkingan-data', [PerangkinganController::class, 'data'])->name('perangkingan.data');
     Route::get('/export-masyarakat', [PerangkinganController::class, 'export'])->name('masyarakat.export');
+    Route::get('/ranking/pdf', [App\Http\Controllers\PdfController::class, 'generateRankingPdf'])->name('ranking.pdf');
+
     Route::controller(MasyarakatController::class)->group(function () {
         Route::get('/masyarakat-data', 'getData')->name('masyarakat.data');
         Route::get('/upload-data-masyarakat', 'uploadPage')->name('masyarakat.upload.page');

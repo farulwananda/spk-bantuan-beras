@@ -25,7 +25,10 @@
                     <div class="flex-row py-3 card-header d-flex align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Perangkingan</h6>
                         <div>
-                            <a href="{{ route('masyarakat.export') }}" class="mb-1 btn btn-success"><i class="fa-solid fa-file-excel"></i> Cetak</a>
+                            <a href="{{ route('masyarakat.export') }}" class="mb-1 btn btn-success"><i
+                                    class="fa-solid fa-file-excel"></i> Cetak Excel</a>
+                            <a href="{{ route('ranking.pdf') }}" class="mb-1 btn btn-danger" target="_blank"><i
+                                    class="fa-solid fa-file-pdf"></i> Cetak PDF</a>
                         </div>
                     </div>
                     <div class="p-3 table-responsive">
@@ -87,8 +90,8 @@
                         data: 'vektor_v',
                         name: 'vektor_v',
                         render: function(data, type, row) {
-                        return data ? data : 'Vektor V Belum Diproses';
-                    }
+                            return data ? data : 'Vektor V Belum Diproses';
+                        }
                     }
                 ]
             });
