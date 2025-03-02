@@ -11,7 +11,7 @@
 
         <div class="mb-3 row">
             <!-- Earnings (Monthly) Card Example -->
-            <div class="mb-4 col-xl-3 col-md-6">
+            <div class="mb-4 col-xl-6 col-md-6">
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="row align-items-center">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-4 col-xl-3 col-md-6">
+            <div class="mb-4 col-xl-6 col-md-6">
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -42,42 +42,6 @@
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-shopping-cart fa-2x text-success"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-4 col-xl-3 col-md-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="mr-2 col">
-                                <div class="mb-1 text-xs font-weight-bold text-uppercase">Jumlah Sub Kriteria</div>
-                                <div class="mb-0 mr-3 text-gray-800 h5 font-weight-bold">{{ $dataSubKriterias }}</div>
-                                <div class="mt-2 mb-0 text-xs text-muted">
-                                    <span>Sub Kriteria Yang Terdaftar</span>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-users fa-2x text-info"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-4 col-xl-3 col-md-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="mr-2 col">
-                                <div class="mb-1 text-xs font-weight-bold text-uppercase">Jumlah Pengguna</div>
-                                <div class="mb-0 text-gray-800 h5 font-weight-bold">{{ $dataUsers }}</div>
-                                <div class="mt-2 mb-0 text-xs text-muted">
-                                    <span>Pengguna Yang Terdaftar</span>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-warning"></i>
                             </div>
                         </div>
                     </div>

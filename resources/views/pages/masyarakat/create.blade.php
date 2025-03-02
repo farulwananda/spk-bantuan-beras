@@ -65,8 +65,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="jenis_kelamin">Jenis Kelamin</label>
-                                        <input type="text" name="jenis_kelamin" class="form-control" id="jenis_kelamin"
-                                            placeholder="Jenis Kelamin" value="{{ old('jenis_kelamin') }}">
+                                        <select name="jenis_kelamin" class="form-control" id="jenis_kelamin">
+                                            <option value="">Pilih Jenis Kelamin</option>
+                                            <option value="Laki-laki"
+                                                {{ old('jenis_kelamin') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki
+                                            </option>
+                                            <option value="Perempuan"
+                                                {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>Perempuan
+                                            </option>
+                                        </select>
                                         @error('jenis_kelamin')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -86,7 +93,7 @@
                                     <div class="form-group">
                                         <label for="provinsi">Provinsi</label>
                                         <input type="text" name="provinsi" class="form-control" id="provinsi"
-                                            placeholder="Provinsi" value="{{ old('provinsi') }}">
+                                            placeholder="Provinsi" value="JAWA TIMUR" readonly>
                                         @error('provinsi')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -96,7 +103,7 @@
                                     <div class="form-group">
                                         <label for="kabupaten_kota">Kabupaten/Kota</label>
                                         <input type="text" name="kabupaten_kota" class="form-control" id="kabupaten_kota"
-                                            placeholder="Kabupaten/Kota" value="{{ old('kabupaten_kota') }}">
+                                            placeholder="Kabupaten/Kota" value="BONDOWOSO" readonly>
                                         @error('kabupaten_kota')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -106,7 +113,7 @@
                                     <div class="form-group">
                                         <label for="kecamatan">Kecamatan</label>
                                         <input type="text" name="kecamatan" class="form-control" id="kecamatan"
-                                            placeholder="Kecamatan" value="{{ old('kecamatan') }}">
+                                            placeholder="Kecamatan" value="BONDOWOSO" readonly>
                                         @error('kecamatan')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -115,9 +122,28 @@
                                 <div class="col-lg-3">
                                     <div class="form-group">
                                         <label for="desa_kelurahan">Desa/Kelurahan</label>
-                                        <input type="text" name="desa_kelurahan" class="form-control"
-                                            id="desa_kelurahan" placeholder="Desa/Kelurahan"
-                                            value="{{ old('desa_kelurahan') }}">
+                                        <select name="desa_kelurahan" class="form-control" id="desa_kelurahan">
+                                            <option value="">Pilih Kelurahan</option>
+                                            <option value="BADEAN"
+                                                {{ old('desa_kelurahan') == 'BADEAN' ? 'selected' : '' }}>BADEAN
+                                            </option>
+                                            <option value="Blindungan"
+                                                {{ old('desa_kelurahan') == 'BLINDUNGAN' ? 'selected' : '' }}>BLINDUNGAN
+                                            </option>
+                                            <option value="DABASAH"
+                                                {{ old('desa_kelurahan') == 'DABASAH' ? 'selected' : '' }}>DABASAH</option>
+                                            <option value="KADEMANGAN"
+                                                {{ old('desa_kelurahan') == 'KADEMANGAN' ? 'selected' : '' }}>KADEMANGAN
+                                            </option>
+                                            <option value="KEMBANG"
+                                                {{ old('desa_kelurahan') == 'KEMBANG' ? 'selected' : '' }}>KEMBANG</option>
+                                            <option value="KOTAKULON"
+                                                {{ old('desa_kelurahan') == 'KOTAKULON' ? 'selected' : '' }}>KOTAKULON
+                                            </option>
+                                            <option value="NANGKAAN"
+                                                {{ old('desa_kelurahan') == 'NANGKAAN' ? 'selected' : '' }}>NANGKAAN
+                                            </option>
+                                        </select>
                                         @error('desa_kelurahan')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -126,9 +152,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="desil_kesejahteraan">Desil Kesejahteraan</label>
-                                        <input type="text" name="desil_kesejahteraan" class="form-control"
-                                            id="desil_kesejahteraan" placeholder="Desil Kesejahteraan"
-                                            value="{{ old('desil_kesejahteraan') }}">
+                                        <select name="desil_kesejahteraan" class="form-control" id="desil_kesejahteraan">
+                                            <option value="">Pilih Desil Kesejahteraan</option>
+                                            <option value="1"
+                                                {{ old('desil_kesejahteraan') == '1' ? 'selected' : '' }}>1</option>
+                                            <option value="2"
+                                                {{ old('desil_kesejahteraan') == '2' ? 'selected' : '' }}>2</option>
+                                            <option value="3"
+                                                {{ old('desil_kesejahteraan') == '3' ? 'selected' : '' }}>3</option>
+                                        </select>
                                         @error('desil_kesejahteraan')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -147,9 +179,13 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="padan_dukcapil">Padan Dukcapil</label>
-                                        <input type="text" name="padan_dukcapil" class="form-control"
-                                            id="padan_dukcapil" placeholder="Padan Dukcapil"
-                                            value="{{ old('padan_dukcapil') }}">
+                                        <select name="padan_dukcapil" class="form-control" id="padan_dukcapil">
+                                            <option value="">Pilih Status Padan Dukcapil</option>
+                                            <option value="Ya" {{ old('padan_dukcapil') == 'Ya' ? 'selected' : '' }}>
+                                                Ya</option>
+                                            <option value="Tidak"
+                                                {{ old('padan_dukcapil') == 'Tidak' ? 'selected' : '' }}>Tidak</option>
+                                        </select>
                                         @error('padan_dukcapil')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -159,8 +195,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="pekerjaan">Pekerjaan</label>
-                                        <input type="text" name="pekerjaan" class="form-control" id="pekerjaan"
-                                            placeholder="Pekerjaan" value="{{ old('pekerjaan') }}">
+                                        <select name="pekerjaan" class="form-control" id="pekerjaan">
+                                            <option value="">Pilih Pekerjaan</option>
+                                            @foreach ($pekerjaan as $p)
+                                                <option value="{{ $p->nama_subkriteria }}"
+                                                    {{ old('pekerjaan') == $p->nama_subkriteria ? 'selected' : '' }}>
+                                                    {{ $p->nama_subkriteria }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         @error('pekerjaan')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -172,9 +215,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="kepemilikan_rumah">Kepemilikan Rumah</label>
-                                        <input type="text" name="kepemilikan_rumah" class="form-control"
-                                            id="kepemilikan_rumah" placeholder="Kepemilikan Rumah"
-                                            value="{{ old('kepemilikan_rumah') }}">
+                                        <select name="kepemilikan_rumah" class="form-control" id="kepemilikan_rumah">
+                                            <option value="">Pilih Kepemilikan Rumah</option>
+                                            @foreach ($kepemilikanRumah as $k)
+                                                <option value="{{ $k->nama_subkriteria }}"
+                                                    {{ old('kepemilikan_rumah') == $k->nama_subkriteria ? 'selected' : '' }}>
+                                                    {{ $k->nama_subkriteria }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         @error('kepemilikan_rumah')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -183,8 +232,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="jenis_atap">Jenis Atap</label>
-                                        <input type="text" name="jenis_atap" class="form-control" id="jenis_atap"
-                                            placeholder="Jenis Atap" value="{{ old('jenis_atap') }}">
+                                        <select name="jenis_atap" class="form-control" id="jenis_atap">
+                                            <option value="">Pilih Jenis Atap</option>
+                                            @foreach ($jenisAtap as $j)
+                                                <option value="{{ $j->nama_subkriteria }}"
+                                                    {{ old('jenis_atap') == $j->nama_subkriteria ? 'selected' : '' }}>
+                                                    {{ $j->nama_subkriteria }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         @error('jenis_atap')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -193,9 +249,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="jenis_dinding">Jenis Dinding</label>
-                                        <input type="text" name="jenis_dinding" class="form-control"
-                                            id="jenis_dinding" placeholder="Jenis Dinding"
-                                            value="{{ old('jenis_dinding') }}">
+                                        <select name="jenis_dinding" class="form-control" id="jenis_dinding">
+                                            <option value="">Pilih Jenis Dinding</option>
+                                            @foreach ($jenisDinding as $d)
+                                                <option value="{{ $d->nama_subkriteria }}"
+                                                    {{ old('jenis_dinding') == $d->nama_subkriteria ? 'selected' : '' }}>
+                                                    {{ $d->nama_subkriteria }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         @error('jenis_dinding')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -204,8 +266,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="jenis_lantai">Jenis Lantai</label>
-                                        <input type="text" name="jenis_lantai" class="form-control" id="jenis_lantai"
-                                            placeholder="Jenis Lantai" value="{{ old('jenis_lantai') }}">
+                                        <select name="jenis_lantai" class="form-control" id="jenis_lantai">
+                                            <option value="">Pilih Jenis Lantai</option>
+                                            @foreach ($jenisLantai as $l)
+                                                <option value="{{ $l->nama_subkriteria }}"
+                                                    {{ old('jenis_lantai') == $l->nama_subkriteria ? 'selected' : '' }}>
+                                                    {{ $l->nama_subkriteria }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         @error('jenis_lantai')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -214,9 +283,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="sumber_penerangan">Sumber Penerangan</label>
-                                        <input type="text" name="sumber_penerangan" class="form-control"
-                                            id="sumber_penerangan" placeholder="Sumber Penerangan"
-                                            value="{{ old('sumber_penerangan') }}">
+                                        <select name="sumber_penerangan" class="form-control" id="sumber_penerangan">
+                                            <option value="">Pilih Sumber Penerangan</option>
+                                            @foreach ($sumberPenerangan as $s)
+                                                <option value="{{ $s->nama_subkriteria }}"
+                                                    {{ old('sumber_penerangan') == $s->nama_subkriteria ? 'selected' : '' }}>
+                                                    {{ $s->nama_subkriteria }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         @error('sumber_penerangan')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -225,9 +300,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="bahan_bakar_memasak">Bahan Bakar Memasak</label>
-                                        <input type="text" name="bahan_bakar_memasak" class="form-control"
-                                            id="bahan_bakar_memasak" placeholder="Bahan Bakar Memasak"
-                                            value="{{ old('bahan_bakar_memasak') }}">
+                                        <select name="bahan_bakar_memasak" class="form-control" id="bahan_bakar_memasak">
+                                            <option value="">Pilih Bahan Bakar Memasak</option>
+                                            @foreach ($bahanBakarMemasak as $b)
+                                                <option value="{{ $b->nama_subkriteria }}"
+                                                    {{ old('bahan_bakar_memasak') == $b->nama_subkriteria ? 'selected' : '' }}>
+                                                    {{ $b->nama_subkriteria }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         @error('bahan_bakar_memasak')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -236,9 +317,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="sumber_air_minum">Sumber Air Minum</label>
-                                        <input type="text" name="sumber_air_minum" class="form-control"
-                                            id="sumber_air_minum" placeholder="Sumber Air Minum"
-                                            value="{{ old('sumber_air_minum') }}">
+                                        <select name="sumber_air_minum" class="form-control" id="sumber_air_minum">
+                                            <option value="">Pilih Sumber Air Minum</option>
+                                            @foreach ($sumberAirMinum as $a)
+                                                <option value="{{ $a->nama_subkriteria }}"
+                                                    {{ old('sumber_air_minum') == $a->nama_subkriteria ? 'selected' : '' }}>
+                                                    {{ $a->nama_subkriteria }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         @error('sumber_air_minum')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
@@ -247,9 +334,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="fasilitas_bab">Fasilitas BAB</label>
-                                        <input type="text" name="fasilitas_bab" class="form-control"
-                                            id="fasilitas_bab" placeholder="Fasilitas BAB"
-                                            value="{{ old('fasilitas_bab') }}">
+                                        <select name="fasilitas_bab" class="form-control" id="fasilitas_bab">
+                                            <option value="">Pilih Fasilitas BAB</option>
+                                            @foreach ($fasilitasBab as $f)
+                                                <option value="{{ $f->nama_subkriteria }}"
+                                                    {{ old('fasilitas_bab') == $f->nama_subkriteria ? 'selected' : '' }}>
+                                                    {{ $f->nama_subkriteria }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         @error('fasilitas_bab')
                                             <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror

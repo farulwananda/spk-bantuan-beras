@@ -15,11 +15,9 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $dataUsers = User::count();
         $dataMasyarakats = Masyarakat::count();
         $dataKriterias = Kriteria::count();
-        $dataSubKriterias = SubKriteria::count();
 
-        return view('pages.dashboard.index', compact('dataUsers', 'dataMasyarakats', 'dataKriterias', 'dataSubKriterias'));
+        return view('pages.dashboard.index', compact('dataMasyarakats', 'dataKriterias'));
     }
 }

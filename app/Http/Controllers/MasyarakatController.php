@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\DataSiap;
 use App\Models\Masyarakat;
+use App\Models\Normalisasi;
+use App\Models\SubKriteria;
 use Illuminate\Http\Request;
 use App\Imports\MasyarakatImport;
 use App\Helpers\GenerateKodeHelper;
@@ -13,7 +15,6 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\MasyarakatRequest;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\UploadMasyarakatRequest;
-use App\Models\Normalisasi;
 
 class MasyarakatController extends Controller
 {
@@ -57,8 +58,63 @@ class MasyarakatController extends Controller
     public function create()
     {
         $generateKode = GenerateKodeHelper::generate(Masyarakat::class, 'A', 'kode');
+        $pekerjaan = SubKriteria::with('kriteria')
+            ->whereHas('kriteria', fn($q) => $q->where('nama_kriteria', 'Pekerjaan'))
+            ->select('nama_subkriteria')
+            ->get();
 
-        return view('pages.masyarakat.create', compact('generateKode'));
+        $kepimilikanRumah = SubKriteria::with('kriteria')
+            ->whereHas('kriteria', fn($q) => $q->where('nama_kriteria', 'Kepemilikan Rumah'))
+            ->select('nama_subkriteria')
+            ->get();
+
+        $jenisAtap = SubKriteria::with('kriteria')
+            ->whereHas('kriteria', fn($q) => $q->where('nama_kriteria', 'Jenis Atap'))
+            ->select('nama_subkriteria')
+            ->get();
+
+        $jenisDinding = SubKriteria::with('kriteria')
+            ->whereHas('kriteria', fn($q) => $q->where('nama_kriteria', 'Jenis Dinding'))
+            ->select('nama_subkriteria')
+            ->get();
+
+        $jenisLantai = SubKriteria::with('kriteria')
+            ->whereHas('kriteria', fn($q) => $q->where('nama_kriteria', 'Jenis Lantai'))
+            ->select('nama_subkriteria')
+            ->get();
+
+        $sumberPenerangan = SubKriteria::with('kriteria')
+            ->whereHas('kriteria', fn($q) => $q->where('nama_kriteria', 'Sumber Penerangan'))
+            ->select('nama_subkriteria')
+            ->get();
+
+        $bahanBakarMemasak = SubKriteria::with('kriteria')
+            ->whereHas('kriteria', fn($q) => $q->where('nama_kriteria', 'Bahan Bakar Memasak'))
+            ->select('nama_subkriteria')
+            ->get();
+
+        $sumberAirMinum = SubKriteria::with('kriteria')
+            ->whereHas('kriteria', fn($q) => $q->where('nama_kriteria', 'Sumber Air'))
+            ->select('nama_subkriteria')
+            ->get();
+
+        $fasilitasBab = SubKriteria::with('kriteria')
+            ->whereHas('kriteria', fn($q) => $q->where('nama_kriteria', 'Fasilitas Buang Air Besar'))
+            ->select('nama_subkriteria')
+            ->get();
+
+        return view('pages.masyarakat.create', [
+            'generateKode' => $generateKode,
+            'pekerjaan' => $pekerjaan,
+            'kepemilikanRumah' => $kepimilikanRumah,
+            'jenisAtap' => $jenisAtap,
+            'jenisDinding' => $jenisDinding,
+            'jenisLantai' => $jenisLantai,
+            'sumberPenerangan' => $sumberPenerangan,
+            'bahanBakarMemasak' => $bahanBakarMemasak,
+            'sumberAirMinum' => $sumberAirMinum,
+            'fasilitasBab' => $fasilitasBab,
+        ]);
     }
 
     public function uploadPage()
