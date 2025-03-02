@@ -143,6 +143,18 @@
                                             <option value="NANGKAAN"
                                                 {{ old('desa_kelurahan') == 'NANGKAAN' ? 'selected' : '' }}>NANGKAAN
                                             </option>
+                                            <option value="PANCORAN"
+                                                {{ old('desa_kelurahan') == 'PANCORAN' ? 'selected' : '' }}>PANCORAN
+                                            </option>
+                                            <option value="PEJATEN"
+                                                {{ old('desa_kelurahan') == 'PEJATEN' ? 'selected' : '' }}>PEJATEN
+                                            </option>
+                                            <option value="SUKOWIRYO"
+                                                {{ old('desa_kelurahan') == 'SUKOWIRYO' ? 'selected' : '' }}>SUKOWIRYO
+                                            </option>
+                                            <option value="TAMANSARI"
+                                                {{ old('desa_kelurahan') == 'TAMANSARI' ? 'selected' : '' }}>TAMANSARI
+                                            </option>
                                         </select>
                                         @error('desa_kelurahan')
                                             <small class="form-text text-danger">{{ $message }}</small>
