@@ -7,6 +7,7 @@ use App\Models\Kriteria;
 use App\Models\Masyarakat;
 use App\Models\SubKriteria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -18,6 +19,19 @@ class DashboardController extends Controller
         $dataMasyarakats = Masyarakat::count();
         $dataKriterias = Kriteria::count();
 
-        return view('pages.dashboard.index', compact('dataMasyarakats', 'dataKriterias'));
+        // Mengambil data untuk pie chart desa_kelurahan
+        $dataDesa = Masyarakat::select('desa_kelurahan', DB::raw('count(*) as total'))
+            ->groupBy('desa_kelurahan')
+            ->get();
+
+        $labelsDesa = $dataDesa->pluck('desa_kelurahan')->toArray();
+        $dataTotalDesa = $dataDesa->pluck('total')->toArray();
+
+        return view('pages.dashboard.index', compact(
+            'dataMasyarakats',
+            'dataKriterias',
+            'labelsDesa',
+            'dataTotalDesa'
+        ));
     }
 }
